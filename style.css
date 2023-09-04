@@ -48,6 +48,24 @@ body{
     left: -10%;
 }
 
+@media (max-width: 800px) {
+    #timer{
+        font-size: 4rem;
+        width: 350px;
+    }
+
+    button {
+        font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (1200 - 320)));
+        padding: calc(20px + (50 - 20) * ((100vw - 320px) / (1200 - 320)));
+    }
+}
+
+
+/* @bycapwan */
+
+
+
+
 /* another animation */
 /* @keyframes aaa {
     0%{
