@@ -56,7 +56,7 @@ body{
 
     button {
         font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (1200 - 320)));
-        padding: calc(20px + (50 - 20) * ((100vw - 320px) / (1200 - 320)));
+        padding: calc(20px + (40 - 20) * ((100vw - 320px) / (1200 - 320)));
     }
 }
 
