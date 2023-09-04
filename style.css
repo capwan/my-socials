@@ -48,18 +48,19 @@ body{
     left: -10%;
 }
 
-@media (max-width: 451px) {
-    .button:after {
-        width: 90px;
-        height: 90px;
-        margin: 5px;
-        font-size: 13px;
+@media (max-width: 450px) {
+    button{
+        /* font-size: 4rem;
+        width: 50%;
+        height: 30%; */
+        box-sizing: border-box;
+        width: 100%;
+        padding: 5%;
+        display: block;
     }
 
+
 }
-
-/* @bycapwan */
-
 
 
 
