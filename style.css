@@ -48,6 +48,14 @@ body{
     left: -10%;
 }
 
+@media (max-width: 451px) {
+    .button {
+        width: 90px;
+        height: 90px;
+        margin: 5px;
+    }
+
+}
 
 /* @bycapwan */
 
