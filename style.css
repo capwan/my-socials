@@ -16,7 +16,7 @@ body{
     width: 90px;
     height: 90px;
     background: #f1f1f1;
-    margin: 10px;
+    margin: 5px;
     border-radius: 30%;
     box-shadow: 0 5px 15px -5px #00000070;
     color: #2e86de;
@@ -46,18 +46,6 @@ body{
     animation: 0.7s 1;
     top: -10%;
     left: -10%;
-}
-
-@media (max-width: 800px) {
-    #timer{
-        font-size: 4rem;
-        width: 350px;
-    }
-
-    button {
-        font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (1600 - 320)));
-        padding: calc(20px + (60 - 20) * ((100vw - 320px) / (1200 - 320)));
-    }
 }
 
 
