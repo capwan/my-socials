@@ -1,0 +1,64 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color : #c8d6e5;
+}
+
+.middle{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+}
+.button{
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    background: #f1f1f1;
+    margin: 10px;
+    border-radius: 30%;
+    box-shadow: 0 5px 15px -5px #00000070;
+    color: #2e86de;
+    overflow: hidden;
+    position: relative;
+}
+.button i{
+    line-height: 90px;
+    font-size: 26px;
+    transition: 0.2s linear;
+}
+.button:hover i{
+    transform: scale(1.3);
+    color: #f1f1f1;
+}
+.button::before{
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: #2e86de;
+    transform: rotate(45deg);
+    left: -110%;
+    top: 90%;
+}
+.button:hover::before{
+    animation: 0.7s 1;
+    top: -10%;
+    left: -10%;
+}
+
+/* another animation */
+/* @keyframes aaa {
+    0%{
+        top: 90%;
+        left: -110%;
+    }50%{
+        top: -30%;
+        left: 10%;
+    }100%{
+        top: -10%;
+        left: -10%;
+    }
+} */
+
