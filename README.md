@@ -6,4 +6,4 @@ Just my social links
 ## Instruction
 Just open `index.html`.
 
-**[Live Demo]([https://capwan.github.io/my-socials/])**
+**[Live Demo](https://capwan.github.io/my-socials/)**
