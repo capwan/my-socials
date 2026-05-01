@@ -1,80 +1,232 @@
-body{
-    padding: 0;
+* {
     margin: 0;
-    background-color : #c8d6e5;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.middle{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    text-align: center;
-}
-.button{
-    display: inline-block;
-    width: 90px;
-    height: 90px;
-    background: #f1f1f1;
-    margin: 5px;
-    border-radius: 30%;
-    box-shadow: 0 5px 15px -5px #00000070;
-    color: #2e86de;
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f0f1a;
+    font-family: system-ui, -apple-system, sans-serif;
     overflow: hidden;
     position: relative;
 }
-.button i{
-    line-height: 90px;
-    font-size: 26px;
-    transition: 0.2s linear;
+
+/* ===== CANVAS BACKGROUND ===== */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
 }
-.button:hover i{
-    transform: scale(1.3);
-    color: #f1f1f1;
+
+/* ===== CONTAINER ===== */
+.container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+    position: relative;
 }
-.button::before{
-    content: "";
+
+/* ===== SOCIAL BUTTONS — BASE ===== */
+.social-btn {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.7rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    
+    /* Fade-in animation */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Staggered delay for buttons */
+.social-btn:nth-child(1) { animation-delay: 0.1s; }
+.social-btn:nth-child(2) { animation-delay: 0.2s; }
+.social-btn:nth-child(3) { animation-delay: 0.3s; }
+.social-btn:nth-child(4) { animation-delay: 0.4s; }
+
+/* ===== CLEAN HOVER EFFECT — NO ROTATION ===== */
+.social-btn::after {
+    content: '';
     position: absolute;
-    width: 120%;
-    height: 120%;
-    background: #2e86de;
-    transform: rotate(45deg);
-    left: -110%;
-    top: 90%;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(
+        60% 60% at 50% 50%, 
+        rgba(255, 255, 255, 0.15), 
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
 }
-.button:hover::before{
-    animation: 0.7s 1;
-    top: -10%;
-    left: -10%;
+
+.social-btn:hover::after {
+    opacity: 1;
 }
 
-@media (max-width: 450px) {
-    .middle{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        box-sizing: border-box;
-        height: fit-content;
-        width: 100%;
+/* ===== BRAND COLOR GLOW ON HOVER ===== */
+.social-btn.github:hover { 
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.3),
+        0 0 35px rgba(255, 255, 255, 0.25); 
+    transform: translateY(-4px) scale(1.04);
+}
+
+.social-btn.linkedin:hover { 
+    box-shadow: 
+        0 0 0 1px rgba(0, 119, 181, 0.5),
+        0 0 35px rgba(0, 119, 181, 0.4); 
+    transform: translateY(-4px) scale(1.04);
+}
+
+.social-btn.instagram:hover { 
+    box-shadow: 
+        0 0 0 1px rgba(228, 85, 159, 0.5),
+        0 0 35px rgba(228, 85, 159, 0.4); 
+    transform: translateY(-4px) scale(1.04);
+}
+
+.social-btn.telegram:hover { 
+    box-shadow: 
+        0 0 0 1px rgba(0, 136, 204, 0.5),
+        0 0 35px rgba(0, 136, 204, 0.4); 
+    transform: translateY(-4px) scale(1.04);
+}
+
+/* ===== ICON STYLES ===== */
+.social-btn i {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.social-btn:hover i {
+    transform: scale(1.12);
+}
+
+.social-btn.github:hover i { color: #fff; }
+.social-btn.linkedin:hover i { color: #fff; }
+.social-btn.instagram:hover i { color: #fff; }
+.social-btn.telegram:hover i { color: #fff; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .container {
+        gap: 15px;
     }
-}    
-
-/* @bycapwan */
-
-
-
-/* another animation */
-/* @keyframes aaa {
-    0%{
-        top: 90%;
-        left: -110%;
-    }50%{
-        top: -30%;
-        left: 10%;
-    }100%{
-        top: -10%;
-        left: -10%;
+    .social-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+        border-radius: 16px;
     }
-} */
+}
 
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+    .social-btn {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+.social-btn:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 4px;
+}
+
+/* ===== TOOLTIPS ===== */
+.social-btn[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 12px;
+    background: rgba(15, 15, 26, 0.95);
+    color: #fff;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 20;
+    opacity: 0;
+    animation: tooltipFade 0.2s ease-out forwards;
+    font-family: system-ui, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+@keyframes tooltipFade {
+    to { opacity: 1; transform: translateX(-50%) translateY(-2px); }
+}
+
+@media (max-width: 480px) {
+    .social-btn[data-tooltip]:hover::before {
+        display: none; /* Не показывать на мобильных — экономим место */
+    }
+}
+
+
+/* ===== ONLINE STATUS INDICATOR ===== */
+.online-status {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 10px;
+    height: 10px;
+    background: #00d17a;
+    border-radius: 50%;
+    z-index: 50;
+    box-shadow: 0 0 0 0 rgba(0, 209, 122, 0.7);
+    animation: pulse-green 2s infinite;
+    cursor: default;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(0, 209, 122, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 209, 122, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 209, 122, 0); }
+}
+
+@media (max-width: 480px) {
+    .online-status {
+        bottom: 17px;
+        right: 17px;
+        width: 9px;
+        height: 9px;
+    }
+}
